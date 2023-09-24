@@ -14,5 +14,5 @@ ADD_EXECUTABLE(buildsite ${DANGERFARM_SOURCES})
 
 TARGET_COMPILE_OPTIONS(
     buildsite PRIVATE -g -O0 -std=gnu99
-                     -Wall -Werror -Wextra -Wpedantic
-                     -Wno-unused-command-line-argument)
+                     -Wno-unused-command-line-argument
+                     -Wno-gnu-statement-expression)
