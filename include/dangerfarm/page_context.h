@@ -24,3 +24,16 @@ struct page_context
  *      - a non-zero error code on failure.
  */
 int with_default_page_context(callback_fn callback, FILE* out);
+
+/**
+ * \brief Override the title in a page context, and call the callback with the
+ * updated page context.
+ *
+ * \param callback              The callback to call with the context.
+ * \param out                   The output file for this callback operation.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+int with_page_title(callback_fn callback, FILE* out);
