@@ -65,6 +65,12 @@ int with_tags(
 #define XMETA_VIEWPORT(fail_label, viewport) \
     XMETA_NAME(fail_label, "viewport", viewport)
 
+/* meta property tag. */
+#define XMETA_PROPERTY(fail_label, property, content) \
+    fprintf( \
+        out, "<meta property=\"%s\" content=\"%s\" />\n", (property), \
+        (content))
+
 /* title tag. */
 #define XTITLE(fail_label, body) \
     TRY_OR_FAIL(\
