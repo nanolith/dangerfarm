@@ -1,3 +1,4 @@
+#include <dangerfarm/control.h>
 #include <dangerfarm/directory.h>
 #include <dangerfarm/status_codes.h>
 #include <stdio.h>
@@ -9,14 +10,9 @@ int main(int argc, char* argv[])
     (void)argv;
 
     printf("Creating directories...\n");
+    TRY_OR_FAIL_MSG(make_site_directories(), fail, "creating directories");
 
-    retval = make_site_directories();
-    if (STATUS_SUCCESS != retval)
-    {
-        fprintf(stderr, "Error creating directories.\n");
-        goto fail;
-    }
-
+    /* success. */
     return 0;
 
 fail:
