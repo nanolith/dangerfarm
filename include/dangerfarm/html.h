@@ -47,3 +47,8 @@ int with_tags(
         with_tags(out, "<body>", "</body>", \
             lambda(int, (void* context, FILE* out), body), context), \
         fail_label)
+
+/* meta tag. */
+#define XMETA_HTTP_EQUIV(fail_label, equiv, content) \
+    fprintf( \
+        out, "<meta http-equiv=\"%s\" content=\"%s\" />", (equiv), (content))
