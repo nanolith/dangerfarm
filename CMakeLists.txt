@@ -13,6 +13,4 @@ AUX_SOURCE_DIRECTORY(src DANGERFARM_SOURCES)
 ADD_EXECUTABLE(buildsite ${DANGERFARM_SOURCES})
 
 TARGET_COMPILE_OPTIONS(
-    buildsite PRIVATE -g -O0 -std=gnu99
-                     -Wno-unused-command-line-argument
-                     -Wno-gnu-statement-expression)
+    buildsite PRIVATE -g -O0 -std=gnu99)
