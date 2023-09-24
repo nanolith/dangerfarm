@@ -22,6 +22,12 @@ int make_site_directories()
 
     /* create the static-site base directory. */
     TRY_OR_FAIL(build_dir("static-site"), done);
+    /* create the css directory. */
+    TRY_OR_FAIL(build_dir("static-site/css"), done);
+    /* create the js directory. */
+    TRY_OR_FAIL(build_dir("static-site/js"), done);
+    /* create the img directory. */
+    TRY_OR_FAIL(build_dir("static-site/img"), done);
 
 done:
     return retval;
