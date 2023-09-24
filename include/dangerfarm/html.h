@@ -1,5 +1,7 @@
 #pragma once
 
+#include <dangerfarm/control.h>
+#include <dangerfarm/lambda.h>
 #include <dangerfarm/callback.h>
 
 /**
@@ -19,3 +21,10 @@
 int with_tags(
     FILE* out, const char* begin, const char* end, callback_fn callback,
     void* context);
+
+/* html tag. */
+#define XHTML(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<html>", "</html>", \
+            lambda(int, (void* context, FILE* out), body), context), \
+        fail_label)
