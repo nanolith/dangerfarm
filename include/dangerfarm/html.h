@@ -56,3 +56,7 @@ int with_tags(
 /* meta charset tag. */
 #define XMETA_CHARSET(fail_label, charset) \
     fprintf(out, "<meta charset=\"%s\" />\n", (charset))
+
+/* meta viewport tag. */
+#define XMETA_VIEWPORT(fail_label, viewport) \
+    fprintf(out, "<meta name=\"viewport\" content=\"%s\" />\n", (viewport))
