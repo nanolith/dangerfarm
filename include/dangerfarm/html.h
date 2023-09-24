@@ -48,7 +48,11 @@ int with_tags(
             lambda(int, (void* context, FILE* out), body), context), \
         fail_label)
 
-/* meta tag. */
+/* meta http equiv tag. */
 #define XMETA_HTTP_EQUIV(fail_label, equiv, content) \
     fprintf( \
         out, "<meta http-equiv=\"%s\" content=\"%s\" />\n", (equiv), (content))
+
+/* meta charset tag. */
+#define XMETA_CHARSET(fail_label, charset) \
+    fprintf(out, "<meta charset=\"%s\" />\n", (charset))
