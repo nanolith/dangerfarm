@@ -20,7 +20,7 @@
  */
 int with_tags(
     FILE* out, const char* begin, const char* end, callback_fn callback,
-    void* context);
+    page_context* context);
 
 /* end of tag body. */
 #define XSUCCESS() \
@@ -31,21 +31,21 @@ int with_tags(
 #define XHTML(fail_label, body) \
     TRY_OR_FAIL(\
         with_tags(out, "<html>", "</html>", \
-            lambda(int, (void* context, FILE* out), body), context), \
+            lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
 /* head tag. */
 #define XHEAD(fail_label, body) \
     TRY_OR_FAIL(\
         with_tags(out, "<head>", "</head>", \
-            lambda(int, (void* context, FILE* out), body), context), \
+            lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
 /* body tag. */
 #define XBODY(fail_label, body) \
     TRY_OR_FAIL(\
         with_tags(out, "<body>", "</body>", \
-            lambda(int, (void* context, FILE* out), body), context), \
+            lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
 /* meta http equiv tag. */
