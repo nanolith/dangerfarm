@@ -18,7 +18,7 @@
  */
 int with_tags(
     FILE* out, const char* begin, const char* end, callback_fn callback,
-    void* context)
+    page_context* context)
 {
     int retval;
 
