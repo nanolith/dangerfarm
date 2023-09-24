@@ -18,7 +18,8 @@
  *      - STATUS_SUCCESS on success.
  *      - non-zero error code on failure.
  */
-int with_output_file(const char* filename, callback_fn callback, void* context)
+int with_output_file(
+    const char* filename, callback_fn callback, page_context* context)
 {
     int retval, release_retval;
     FILE* out = NULL;
