@@ -29,6 +29,7 @@ int with_default_page_context(callback_fn callback, FILE* out);
  * \brief Override the title in a page context, and call the callback with the
  * updated page context.
  *
+ * \param title                 The title to override.
  * \param callback              The callback to call with the context.
  * \param out                   The output file for this callback operation.
  *
@@ -36,4 +37,18 @@ int with_default_page_context(callback_fn callback, FILE* out);
  *      - STATUS_SUCCESS on success.
  *      - a non-zero error code on failure.
  */
-int with_page_title(callback_fn callback, FILE* out);
+int with_page_title(const char* title, callback_fn callback, FILE* out);
+
+/**
+ * \brief Override the url in a page context, and call the callback with the
+ * updated page context.
+ *
+ * \param url                   The url to override.
+ * \param callback              The callback to call with the context.
+ * \param out                   The output file for this callback operation.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+int with_page_url(const char* url, callback_fn callback, FILE* out);
