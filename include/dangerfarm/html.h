@@ -28,3 +28,10 @@ int with_tags(
         with_tags(out, "<html>", "</html>", \
             lambda(int, (void* context, FILE* out), body), context), \
         fail_label)
+
+/* body tag. */
+#define XBODY(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<body>", "</body>", \
+            lambda(int, (void* context, FILE* out), body), context), \
+        fail_label)
