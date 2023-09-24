@@ -1,3 +1,4 @@
+#include <dangerfarm/control.h>
 #include <dangerfarm/file.h>
 #include <dangerfarm/status_codes.h>
 
@@ -31,11 +32,7 @@ int with_output_file(const char* filename, callback_fn callback, void* context)
     }
 
     /* call the callback. */
-    retval = callback(context, out);
-    if (STATUS_SUCCESS != retval)
-    {
-        goto cleanup_out;
-    }
+    TRY_OR_FAIL(callback(context, out), cleanup_out);
 
     /* success. */
     retval = STATUS_SUCCESS;
