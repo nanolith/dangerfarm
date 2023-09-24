@@ -1,3 +1,4 @@
+#include <dangerfarm/control.h>
 #include <dangerfarm/directory.h>
 #include <dangerfarm/status_codes.h>
 #include <sys/stat.h>
@@ -20,11 +21,7 @@ int make_site_directories()
     int retval;
 
     /* create the static-site base directory. */
-    retval = build_dir("static-site");
-    if (STATUS_SUCCESS != retval)
-    {
-        goto done;
-    }
+    TRY_OR_FAIL(build_dir("static-site"), done);
 
 done:
     return retval;
