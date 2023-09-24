@@ -1,5 +1,9 @@
 #pragma once
 
-#define STATUS_SUCCESS                                  0
+enum dangerfarm_status_codes
+{
+    STATUS_SUCCESS                                      = 0,
 
-#define ERROR_DANGERFARM_FOPEN                          1000      
+    ERROR_DANGERFARM_FOPEN                              = 1000,
+    ERROR_DANGERFARM_MKDIR,
+};
