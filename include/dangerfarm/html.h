@@ -63,7 +63,7 @@ int with_tags(
 
 /* meta viewport tag. */
 #define XMETA_VIEWPORT(fail_label, viewport) \
-    fprintf(out, "<meta name=\"viewport\" content=\"%s\" />\n", (viewport))
+    XMETA_NAME(fail_label, "viewport", viewport)
 
 /* title tag. */
 #define XTITLE(fail_label, body) \
