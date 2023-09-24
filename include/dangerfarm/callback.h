@@ -1,5 +1,6 @@
 #pragma once
 
+#include <dangerfarm/page_context_fwd.h>
 #include <stdio.h>
 
 /**
