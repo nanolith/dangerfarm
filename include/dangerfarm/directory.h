@@ -29,3 +29,14 @@ int make_site_directories();
  *      - a non-zero error code on failure.
  */
 int with_mkdir(const char dirname, callback_fn callback, void* context);
+
+/**
+ * \brief Build a directory with the given name and default permissions.
+ *
+ * \param dirname           The name of the directory to build.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+int simple_mkdir(const char* dirname);
