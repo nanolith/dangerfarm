@@ -51,4 +51,4 @@ int with_tags(
 /* meta tag. */
 #define XMETA_HTTP_EQUIV(fail_label, equiv, content) \
     fprintf( \
-        out, "<meta http-equiv=\"%s\" content=\"%s\" />", (equiv), (content))
+        out, "<meta http-equiv=\"%s\" content=\"%s\" />\n", (equiv), (content))
