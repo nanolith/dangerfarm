@@ -22,6 +22,11 @@ int with_tags(
     FILE* out, const char* begin, const char* end, callback_fn callback,
     void* context);
 
+/* end of tag body. */
+#define XSUCCESS() \
+    retval = STATUS_SUCCESS; \
+    done: return retval
+
 /* html tag. */
 #define XHTML(fail_label, body) \
     TRY_OR_FAIL(\
