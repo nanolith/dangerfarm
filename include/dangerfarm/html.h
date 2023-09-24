@@ -60,3 +60,10 @@ int with_tags(
 /* meta viewport tag. */
 #define XMETA_VIEWPORT(fail_label, viewport) \
     fprintf(out, "<meta name=\"viewport\" content=\"%s\" />\n", (viewport))
+
+/* title tag. */
+#define XTITLE(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<title>", "</title>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
