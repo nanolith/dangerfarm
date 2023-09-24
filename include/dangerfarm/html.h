@@ -34,6 +34,13 @@ int with_tags(
             lambda(int, (void* context, FILE* out), body), context), \
         fail_label)
 
+/* head tag. */
+#define XHEAD(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<head>", "</head>", \
+            lambda(int, (void* context, FILE* out), body), context), \
+        fail_label)
+
 /* body tag. */
 #define XBODY(fail_label, body) \
     TRY_OR_FAIL(\
