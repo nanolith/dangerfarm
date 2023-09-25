@@ -122,3 +122,10 @@ int with_tags(
         with_tags(out, "<ul>", "</ul>", \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
+
+/* li class tag. */
+#define XLI(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<li>", "</li>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
