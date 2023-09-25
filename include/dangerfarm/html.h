@@ -115,3 +115,10 @@ int with_tags(
         with_tags(out, "<div class=\"" clazz "\">", "</div>", \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
+
+/* ul class tag. */
+#define XUL(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<ul>", "</ul>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
