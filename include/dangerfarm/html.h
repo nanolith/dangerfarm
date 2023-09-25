@@ -81,3 +81,10 @@ int with_tags(
 /* link rel tag. */
 #define XLINK_REL(fail_label, rel, href) \
     fprintf(out, "<link rel=\"%s\" href=\"%s\" />\n", (rel), (href))
+
+/* script with type tag. */
+#define XSCRIPT_TYPE(fail_label, type, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<script type=\"" type "\">", "</script>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
