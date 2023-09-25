@@ -94,3 +94,10 @@ int with_tags(
     fprintf( \
         out, "<link rel=\"%s\" type=\"%s\" href=\"%s\" />\n", \
         (rel), (type), (href))
+
+/* main tag. */
+#define XMAIN(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<main>", "</main>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
