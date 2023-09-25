@@ -88,3 +88,9 @@ int with_tags(
         with_tags(out, "<script type=\"" type "\">", "</script>", \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
+
+/* link rel type tag. */
+#define XLINK_REL_TYPE(fail_label, rel, type, href) \
+    fprintf( \
+        out, "<link rel=\"%s\" type=\"%s\" href=\"%s\" />\n", \
+        (rel), (type), (href))
