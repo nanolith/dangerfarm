@@ -77,3 +77,7 @@ int with_tags(
         with_tags(out, "<title>", "</title>", \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
+
+/* link rel tag. */
+#define XLINK_REL(fail_label, rel, href) \
+    fprintf(out, "<link rel=\"%s\" href=\"%s\" />\n", (rel), (href))
