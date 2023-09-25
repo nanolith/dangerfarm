@@ -101,3 +101,10 @@ int with_tags(
         with_tags(out, "<main>", "</main>", \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
+
+/* div class tag. */
+#define XDIV_CLASS(fail_label, clazz, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<div class=\"" clazz "\">", "</div>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
