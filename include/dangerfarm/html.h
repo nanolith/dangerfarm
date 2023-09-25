@@ -102,6 +102,13 @@ int with_tags(
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
+/* header tag. */
+#define XHEADER(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<header>", "</header>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
+
 /* div class tag. */
 #define XDIV_CLASS(fail_label, clazz, body) \
     TRY_OR_FAIL(\
