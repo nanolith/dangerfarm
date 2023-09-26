@@ -1,6 +1,8 @@
 #pragma once
 
 #include <dangerfarm/callback.h>
+#include <dangerfarm/control.h>
+#include <dangerfarm/lambda.h>
 
 /**
  * \brief Attempts to open the given file for writing, passing it to the
@@ -20,3 +22,10 @@
  */
 int with_output_file(
     const char* filename, callback_fn callback, page_context* context);
+
+/* macro for opening output file. */
+#define WRITE_FILE(fail_label, filename, body) \
+    TRY_OR_FAIL(\
+        with_output_file((filename), \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
