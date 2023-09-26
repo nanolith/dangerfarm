@@ -213,7 +213,7 @@ static int title(page_context* context, FILE* out)
     int retval;
 
     XTITLE(done, {
-        fprintf(out, "%s", context->title);
+        XTEXT(done, context->title);
         XSUCCESS();
     });
     XMETA_PROPERTY(done, "og:title", context->title);
@@ -389,21 +389,21 @@ static int site_menu(page_context* context, FILE* out)
                 XUL(done, {
                     XLI(done, {
                         XA_HREF(done, "/", {
-                            fprintf(out, "/");
+                            XTEXT(done, "/");
                             XSUCCESS();
                         });
                         XSUCCESS();
                     });
                     XLI(done, {
                         XA_HREF(done, "/projects", {
-                            fprintf(out, "/projects");
+                            XTEXT(done, "/projects");
                             XSUCCESS();
                         });
                         XSUCCESS();
                     });
                     XLI(done, {
                         XA_HREF(done, "/about", {
-                            fprintf(out, "/about");
+                            XTEXT(done, "/about");
                             XSUCCESS();
                         });
                         XSUCCESS();
@@ -436,7 +436,7 @@ static int footer_menu(page_context* context, FILE* out)
 
     XFOOTER(done, {
         XA_HREF(done, "/contact", {
-            fprintf(out, "/contact");
+            XTEXT(done, "/contact");
             XSUCCESS();
         });
         XSUCCESS();
