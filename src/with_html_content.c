@@ -364,7 +364,7 @@ static int stylesheet(page_context* context, FILE* out)
 {
     int retval;
 
-    XLINK_REL_TYPE(done, "stylesheet", "text/css", "css/main.css");
+    XLINK_REL_TYPE(done, "stylesheet", "text/css", "/css/main.css");
 
     XSUCCESS();
 }
