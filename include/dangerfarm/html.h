@@ -1,8 +1,8 @@
 #pragma once
 
+#include <dangerfarm/callback.h>
 #include <dangerfarm/control.h>
 #include <dangerfarm/lambda.h>
-#include <dangerfarm/callback.h>
 
 /**
  * \brief Write the given HTML begin tag, call the callback, then write the
