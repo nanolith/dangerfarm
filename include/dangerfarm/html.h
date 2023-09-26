@@ -116,16 +116,23 @@ int with_tags(
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
-/* ul class tag. */
+/* ul tag. */
 #define XUL(fail_label, body) \
     TRY_OR_FAIL(\
         with_tags(out, "<ul>", "</ul>", \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
-/* li class tag. */
+/* li tag. */
 #define XLI(fail_label, body) \
     TRY_OR_FAIL(\
         with_tags(out, "<li>", "</li>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
+
+/* a href tag. */
+#define XA_HREF(fail_label, href, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<a href=\"" href "\">", "</a>", \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
