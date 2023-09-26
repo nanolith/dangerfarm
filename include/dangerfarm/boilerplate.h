@@ -1,6 +1,8 @@
 #pragma once
 
 #include <dangerfarm/callback.h>
+#include <dangerfarm/control.h>
+#include <dangerfarm/lambda.h>
 
 /**
  * \brief Write the header boilerplate for an HTML file, then call the
@@ -17,3 +19,10 @@
  *      - a non-zero error code on failure.
  */
 int with_html_content(FILE* out, callback_fn callback, page_context* context);
+
+/* helper macro for writing the above template wrapper. */
+#define WRAP_TEMPLATE(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_html_content(out, \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
