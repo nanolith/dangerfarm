@@ -143,3 +143,7 @@ int with_tags(
         with_tags(out, "<a href=\"" href "\">", "</a>", \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
+
+/* emit text. */
+#define XTEXT(fail_label, text) \
+    fprintf(out, "%s", (text))
