@@ -79,6 +79,7 @@ int with_page_site_name(
  * the updated page context.
  *
  * \param description           The description to override.
+ * \param context               The context to override.
  * \param callback              The callback to call with the context.
  * \param out                   The output file for this callback operation.
  *
@@ -87,4 +88,5 @@ int with_page_site_name(
  *      - a non-zero error code on failure.
  */
 int with_page_description(
-    const char* description, callback_fn callback, FILE* out);
+    const char* description, page_context* context, callback_fn callback,
+    FILE* out);
