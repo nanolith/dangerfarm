@@ -26,6 +26,11 @@ int make_site_directories()
     /* create the img directory. */
     TRY_OR_FAIL(simple_mkdir("static-site/img"), done);
 
+    /* content directories. */
+    TRY_OR_FAIL(simple_mkdir("static-site/projects"), done);
+    TRY_OR_FAIL(simple_mkdir("static-site/about"), done);
+    TRY_OR_FAIL(simple_mkdir("static-site/contact"), done);
+
 done:
     return retval;
 }
