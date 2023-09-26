@@ -17,6 +17,8 @@ static int site_name(page_context* context, FILE* out);
 static int twitter_card(page_context* context, FILE* out);
 static int linking_data(page_context* context, FILE* out);
 static int stylesheet(page_context* context, FILE* out);
+static int site_menu(page_context* context, FILE* out);
+static int footer_menu(page_context* context, FILE* out);
 
 /**
  * \brief Write the header boilerplate for an HTML file, then call the
@@ -54,10 +56,12 @@ int with_html_content(FILE* out, callback_fn callback, page_context* context)
             TRY_OR_FAIL(stylesheet(context, out), done);
             XSUCCESS(); });
         XBODY(done, {
+            TRY_OR_FAIL(site_menu(context, out), done);
             XMAIN(done, {
                 TRY_OR_FAIL(callback(context, out), done);
                 XSUCCESS();
             });
+            TRY_OR_FAIL(footer_menu(context, out), done);
             XSUCCESS();
         });
         XSUCCESS();
@@ -361,6 +365,82 @@ static int stylesheet(page_context* context, FILE* out)
     int retval;
 
     XLINK_REL_TYPE(done, "stylesheet", "text/css", "css/main.css");
+
+    XSUCCESS();
+}
+
+/**
+ * \brief Emit the site menu.
+ *
+ * \param context           The context for this call.
+ * \param out               The output file stream for this call.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+static int site_menu(page_context* context, FILE* out)
+{
+    int retval;
+
+    XDIV_CLASS(done, "container", {
+        XHEADER(done, {
+            XDIV_CLASS(done, "menu", {
+                XUL(done, {
+                    XLI(done, {
+                        XA_HREF(done, "/", {
+                            fprintf(out, "/");
+                            XSUCCESS();
+                        });
+                        XSUCCESS();
+                    });
+                    XLI(done, {
+                        XA_HREF(done, "/projects", {
+                            fprintf(out, "/projects");
+                            XSUCCESS();
+                        });
+                        XSUCCESS();
+                    });
+                    XLI(done, {
+                        XA_HREF(done, "/about", {
+                            fprintf(out, "/about");
+                            XSUCCESS();
+                        });
+                        XSUCCESS();
+                    });
+                    XSUCCESS();
+                });
+                XSUCCESS();
+            });
+            XSUCCESS();
+        });
+        XSUCCESS();
+    });
+
+    XSUCCESS();
+}
+
+/**
+ * \brief Emit the footer menu.
+ *
+ * \param context           The context for this call.
+ * \param out               The output file stream for this call.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+static int footer_menu(page_context* context, FILE* out)
+{
+    int retval;
+
+    XFOOTER(done, {
+        XA_HREF(done, "/contact", {
+            fprintf(out, "/contact");
+            XSUCCESS();
+        });
+        XSUCCESS();
+    });
 
     XSUCCESS();
 }
