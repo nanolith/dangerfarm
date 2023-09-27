@@ -70,11 +70,7 @@ int with_html_content(FILE* out, callback_fn callback, page_context* context)
         XSUCCESS();
     });
 
-    /* success. */
-    retval = STATUS_SUCCESS;
-
-done:
-    return retval;
+    XSUCCESS();
 }
 
 /**
