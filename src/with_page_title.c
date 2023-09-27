@@ -1,8 +1,6 @@
 #include <dangerfarm/control.h>
 #include <dangerfarm/page_context.h>
 #include <dangerfarm/status_codes.h>
-#include <stdlib.h>
-#include <string.h>
 
 /**
  * \brief Override the title in a page context, and call the callback with the
