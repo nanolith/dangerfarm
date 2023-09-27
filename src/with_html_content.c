@@ -56,12 +56,15 @@ int with_html_content(FILE* out, callback_fn callback, page_context* context)
             TRY_OR_FAIL(stylesheet(context, out), done);
             XSUCCESS(); });
         XBODY(done, {
-            TRY_OR_FAIL(site_menu(context, out), done);
-            XMAIN(done, {
-                TRY_OR_FAIL(callback(context, out), done);
+            XDIV_CLASS(done, "container", {
+                TRY_OR_FAIL(site_menu(context, out), done);
+                XMAIN(done, {
+                    TRY_OR_FAIL(callback(context, out), done);
+                    XSUCCESS();
+                });
+                TRY_OR_FAIL(footer_menu(context, out), done);
                 XSUCCESS();
             });
-            TRY_OR_FAIL(footer_menu(context, out), done);
             XSUCCESS();
         });
         XSUCCESS();
@@ -383,29 +386,26 @@ static int site_menu(page_context* context, FILE* out)
 {
     int retval;
 
-    XDIV_CLASS(done, "container", {
-        XHEADER(done, {
-            XDIV_CLASS(done, "menu", {
-                XUL(done, {
-                    XLI(done, {
-                        XA_HREF(done, "/", {
-                            XTEXT(done, "/");
-                            XSUCCESS();
-                        });
+    XHEADER(done, {
+        XDIV_CLASS(done, "menu", {
+            XUL(done, {
+                XLI(done, {
+                    XA_HREF(done, "/", {
+                        XTEXT(done, "/");
                         XSUCCESS();
                     });
-                    XLI(done, {
-                        XA_HREF(done, "/projects", {
-                            XTEXT(done, "/projects");
-                            XSUCCESS();
-                        });
+                    XSUCCESS();
+                });
+                XLI(done, {
+                    XA_HREF(done, "/projects", {
+                        XTEXT(done, "/projects");
                         XSUCCESS();
                     });
-                    XLI(done, {
-                        XA_HREF(done, "/about", {
-                            XTEXT(done, "/about");
-                            XSUCCESS();
-                        });
+                    XSUCCESS();
+                });
+                XLI(done, {
+                    XA_HREF(done, "/about", {
+                        XTEXT(done, "/about");
                         XSUCCESS();
                     });
                     XSUCCESS();
