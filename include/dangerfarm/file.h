@@ -43,3 +43,7 @@ int copy_file(
         with_output_file((filename), \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
+
+/* macro for copying an input file to output. */
+#define COPY_FILE(fail_label, filename) \
+    TRY_OR_FAIL(copy_file((filename), context, out), fail_label)
