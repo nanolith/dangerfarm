@@ -144,6 +144,13 @@ int with_tags(
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
+/* h1 tag. */
+#define XH1(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<h1>", "</h1>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
+
 /* emit text. */
 #define XTEXT(fail_label, text) \
     fprintf(out, "%s", (text))
