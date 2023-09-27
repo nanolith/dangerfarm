@@ -104,3 +104,10 @@ int with_page_description(
         with_page_url((url), context, \
             lambda(int, (page_context* context, FILE* out), body), out), \
         fail_label)
+
+/* macro for setting the site name. */
+#define PAGE_SITE_NAME(fail_label, site_name, body) \
+    TRY_OR_FAIL(\
+        with_page_site_name((site_name), context, \
+            lambda(int, (page_context* context, FILE* out), body), out), \
+        fail_label)
