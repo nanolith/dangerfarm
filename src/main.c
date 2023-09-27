@@ -13,14 +13,25 @@ int main(int argc, char* argv[])
     (void)argc;
     (void)argv;
 
+    /* create initial directories. */
     printf("Creating directories...\n");
     TRY_OR_FAIL_MSG(make_site_directories(), fail, "creating directories");
 
+    printf("Creating content...\n");
+
+    /* copy the CSS file to static-site. */
+    TRY_OR_FAIL_MSG(
+        with_default_page_context(css_file, NULL), fail,
+        "creating CSS file");
+
+    /* Create the main index. */
     TRY_OR_FAIL_MSG(
         with_default_page_context(main_index, NULL), fail,
         "creating main index");
 
     /* success. */
+    printf("Success.\n");
+
     return 0;
 
 fail:
