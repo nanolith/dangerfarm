@@ -90,3 +90,10 @@ int with_page_site_name(
 int with_page_description(
     const char* description, page_context* context, callback_fn callback,
     FILE* out);
+
+/* macro for setting the page title. */
+#define PAGE_TITLE(fail_label, title, body) \
+    TRY_OR_FAIL(\
+        with_page_title((title), context, \
+            lambda(int, (page_context* context, FILE* out), body), out), \
+        fail_label)
