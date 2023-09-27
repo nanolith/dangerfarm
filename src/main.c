@@ -7,6 +7,12 @@
 #include <dangerfarm/status_codes.h>
 #include <stdio.h>
 
+static callback_fn root_pages[] = {
+    css_file,
+    main_index,
+    project_index,
+};
+
 int main(int argc, char* argv[])
 {
     int retval;
@@ -19,20 +25,14 @@ int main(int argc, char* argv[])
 
     printf("Creating content...\n");
 
-    /* copy the CSS file to static-site. */
-    TRY_OR_FAIL_MSG(
-        with_default_page_context(css_file, NULL), fail,
-        "creating CSS file");
-
-    /* Create the main index. */
-    TRY_OR_FAIL_MSG(
-        with_default_page_context(main_index, NULL), fail,
-        "creating main index");
-
-    /* Create the projects index. */
-    TRY_OR_FAIL_MSG(
-        with_default_page_context(project_index, NULL), fail,
-        "creating projects index");
+    /* create root pages. */
+    for (size_t i = 0; i < sizeof(root_pages) / sizeof(callback_fn); ++i)
+    {
+        /* generate page. */
+        TRY_OR_FAIL_MSG(
+            with_default_page_context(root_pages[i], NULL), fail,
+            "creating page");
+    }
 
     /* success. */
     printf("Success.\n");
