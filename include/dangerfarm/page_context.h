@@ -97,3 +97,10 @@ int with_page_description(
         with_page_title((title), context, \
             lambda(int, (page_context* context, FILE* out), body), out), \
         fail_label)
+
+/* macro for setting the page url. */
+#define PAGE_URL(fail_label, url, body) \
+    TRY_OR_FAIL(\
+        with_page_url((url), context, \
+            lambda(int, (page_context* context, FILE* out), body), out), \
+        fail_label)
