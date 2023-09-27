@@ -111,3 +111,10 @@ int with_page_description(
         with_page_site_name((site_name), context, \
             lambda(int, (page_context* context, FILE* out), body), out), \
         fail_label)
+
+/* macro for setting the description. */
+#define PAGE_SITE_DESCRIPTION(fail_label, description, body) \
+    TRY_OR_FAIL(\
+        with_page_description((description), context, \
+            lambda(int, (page_context* context, FILE* out), body), out), \
+        fail_label)
