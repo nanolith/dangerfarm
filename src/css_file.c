@@ -21,7 +21,7 @@ int css_file(page_context* context, FILE* out)
     int retval;
 
     WRITE_FILE(done, "static-site/css/main.css", {
-        COPY_FILE(done, "css/main.css");
+        COPY_FILE(done, "../css/main.css");
         XSUCCESS();
     });
 
