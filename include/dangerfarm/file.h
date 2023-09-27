@@ -23,6 +23,20 @@
 int with_output_file(
     const char* filename, callback_fn callback, page_context* context);
 
+/**
+ * \brief Copy a file to the output stream.
+ *
+ * \param filename              The name of the file to copy.
+ * \param context               The page context.
+ * \param out                   The output stream.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+int copy_file(
+    const char* filename, page_context* context, FILE* out);
+
 /* macro for opening output file. */
 #define WRITE_FILE(fail_label, filename, body) \
     TRY_OR_FAIL(\
