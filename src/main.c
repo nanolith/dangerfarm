@@ -29,6 +29,11 @@ int main(int argc, char* argv[])
         with_default_page_context(main_index, NULL), fail,
         "creating main index");
 
+    /* Create the projects index. */
+    TRY_OR_FAIL_MSG(
+        with_default_page_context(project_index, NULL), fail,
+        "creating projects index");
+
     /* success. */
     printf("Success.\n");
 
