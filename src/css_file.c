@@ -25,6 +25,5 @@ int css_file(page_context* context, FILE* out)
         XSUCCESS();
     });
 
-done:
-    return retval;
+    XSUCCESS();
 }

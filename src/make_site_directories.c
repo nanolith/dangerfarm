@@ -1,5 +1,6 @@
 #include <dangerfarm/control.h>
 #include <dangerfarm/directory.h>
+#include <dangerfarm/html.h>
 #include <dangerfarm/status_codes.h>
 
 /**
@@ -31,6 +32,5 @@ int make_site_directories()
     TRY_OR_FAIL(simple_mkdir("static-site/about"), done);
     TRY_OR_FAIL(simple_mkdir("static-site/contact"), done);
 
-done:
-    return retval;
+    XSUCCESS();
 }

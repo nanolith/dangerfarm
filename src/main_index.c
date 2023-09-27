@@ -46,8 +46,7 @@ int main_index(page_context* context, FILE* out)
         XSUCCESS();
     });
 
-done:
-    return retval;
+    XSUCCESS();
 }
 
 /**
@@ -77,6 +76,5 @@ int main_content(page_context* context, FILE* out)
         XSUCCESS();
     });
 
-done:
-    return retval;
+    XSUCCESS();
 }
