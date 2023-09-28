@@ -11,6 +11,7 @@ static callback_fn root_pages[] = {
     css_file,
     main_index,
     project_index,
+    contact_index,
     about_index,
 };
 
