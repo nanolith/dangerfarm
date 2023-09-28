@@ -8,3 +8,24 @@
  * \returns the count of news items.
  */
 size_t news_item_count();
+
+/**
+ * \brief Get a news item by index.
+ *
+ * \param index                 The index for the news item.
+ * \param title                 Pointer to the title pointer to populate on
+ *                              success.
+ * \param description           Pointer to the description pointer to populate
+ *                              on success.
+ * \param url                   Pointer to the url pointer to populate on
+ *                              success.
+ * \param news_page             Pointer to the news page callback to populate on
+ *                              success.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+size_t news_item_get(
+    size_t index, const char** title, const char** description,
+    const char** url, callback_fn news_page);
