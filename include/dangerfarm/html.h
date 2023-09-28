@@ -22,6 +22,20 @@ int with_tags(
     FILE* out, const char* begin, const char* end, callback_fn callback,
     page_context* context);
 
+/**
+ * \brief Write the following anchor href tag.
+ *
+ * \param out               The output file to which the tags should be written.
+ * \param callback          The callback to call between begin and end tags.
+ * \param context           The context to pass to the callback.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+int with_anchor_href_tags(
+    FILE* out, const char* href, callback_fn callback, page_context* context);
+
 /* end of tag body. */
 #define XSUCCESS() \
     retval = STATUS_SUCCESS; \
@@ -140,7 +154,7 @@ int with_tags(
 /* a href tag. */
 #define XA_HREF(fail_label, href, body) \
     TRY_OR_FAIL(\
-        with_tags(out, "<a href=\"" href "\">", "</a>", \
+        with_anchor_href_tags(out, (href), \
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
