@@ -1,10 +1,24 @@
 #include <dangerfarm/boilerplate.h>
+#include <dangerfarm/content.h>
 #include <dangerfarm/control.h>
 #include <dangerfarm/file.h>
 #include <dangerfarm/html.h>
 #include <dangerfarm/page_context.h>
 #include <dangerfarm/status_codes.h>
 #include <stdio.h>
+
+typedef struct
+{
+    const char* description;
+    const char* url;
+    callback_fn project_page;
+} project_entry;
+
+project_entry projects[] = {
+    { .description = "jemu65c02 emulator",
+      .url = "jemu65c02/",
+      .project_page = project_jemu65c02_index },
+};
 
 static int main_content(page_context* context, FILE* out);
 
@@ -69,8 +83,27 @@ int main_content(page_context* context, FILE* out)
     });
 
     XP(done, {
-        XTEXT(done,
-            "Coming soon.");
+        XTEXT(done, "These are the projects I've recently been working on.");
+        XSUCCESS();
+    });
+
+    XUL(done, {
+        for (size_t i = 0; i < sizeof(projects) / sizeof(project_entry); ++i)
+        {
+            /* generate the list item. */
+            XLI(done, {
+                XA_HREF(done, (projects[i].url), {
+                    XTEXT(done, projects[i].description);
+                    XSUCCESS();
+                });
+                XSUCCESS();
+            });
+
+            /* generate the page. */
+            TRY_OR_FAIL(
+                with_default_page_context(projects[i].project_page, NULL),
+                done);
+        }
         XSUCCESS();
     });
 
