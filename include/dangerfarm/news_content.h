@@ -19,6 +19,8 @@ size_t news_item_count();
  *                              on success.
  * \param url                   Pointer to the url pointer to populate on
  *                              success.
+ * \param timestamp             Pointer to the time_t variable to receive the
+ *                              timestamp for this item.
  * \param news_page             Pointer to the news page callback to populate on
  *                              success.
  *
@@ -28,4 +30,4 @@ size_t news_item_count();
  */
 size_t news_item_get(
     size_t index, const char** title, const char** description,
-    const char** url, callback_fn news_page);
+    const char** url, time_t* timestamp, callback_fn news_page);
