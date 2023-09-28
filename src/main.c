@@ -3,6 +3,7 @@
 #include <dangerfarm/control.h>
 #include <dangerfarm/directory.h>
 #include <dangerfarm/html.h>
+#include <dangerfarm/news_content.h>
 #include <dangerfarm/page_context.h>
 #include <dangerfarm/status_codes.h>
 #include <stdio.h>
