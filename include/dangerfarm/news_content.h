@@ -1,6 +1,7 @@
 #pragma once
 
 #include <dangerfarm/callback.h>
+#include <time.h>
 
 /**
  * \brief Get the count of news items.
