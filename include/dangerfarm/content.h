@@ -1,6 +1,7 @@
 #pragma once
 
 #include <dangerfarm/callback.h>
+#include <dangerfarm/project_content.h>
 
 /**
  * \brief Create the main index page.
