@@ -15,9 +15,15 @@ typedef struct
 } project_entry;
 
 project_entry projects[] = {
+    /* jemu65c02 */
     { .description = "jemu65c02 emulator",
       .url = "jemu65c02/",
       .project_page = project_jemu65c02_index },
+
+    /* jlink65c02 */
+    { .description = "jlink65c02 linker",
+      .url = "jlink65c02/",
+      .project_page = project_jlink65c02_index },
 };
 
 static int main_content(page_context* context, FILE* out);
