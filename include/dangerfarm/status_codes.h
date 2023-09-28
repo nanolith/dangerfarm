@@ -7,4 +7,5 @@ enum dangerfarm_status_codes
     ERROR_DANGERFARM_FOPEN                              = 1000,
     ERROR_DANGERFARM_MKDIR,
     ERROR_DANGERFARM_MEMORY,
+    ERROR_DANGERFARM_INDEX_OUT_OF_BOUNDS,
 };

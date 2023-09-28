@@ -31,4 +31,4 @@ size_t news_item_count();
  */
 size_t news_item_get(
     size_t index, const char** title, const char** description,
-    const char** url, time_t* timestamp, callback_fn news_page);
+    const char** url, time_t* timestamp, callback_fn* news_page);
