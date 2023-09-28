@@ -32,6 +32,9 @@ int make_site_directories()
     TRY_OR_FAIL(simple_mkdir("static-site/projects/jemu65c02"), done);
     TRY_OR_FAIL(simple_mkdir("static-site/projects/jlink65c02"), done);
     TRY_OR_FAIL(simple_mkdir("static-site/news"), done);
+    TRY_OR_FAIL(simple_mkdir("static-site/news/2023"), done);
+    TRY_OR_FAIL(simple_mkdir("static-site/news/2023/09"), done);
+    TRY_OR_FAIL(simple_mkdir("static-site/news/2023/09/28"), done);
     TRY_OR_FAIL(simple_mkdir("static-site/about"), done);
     TRY_OR_FAIL(simple_mkdir("static-site/contact"), done);
 

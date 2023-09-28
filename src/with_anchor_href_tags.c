@@ -19,13 +19,13 @@ int with_anchor_href_tags(
     int retval;
 
     /* emit the start tag. */
-    fprintf(out, "<a href=\"%s\">\n", href);
+    fprintf(out, "<a href=\"%s\">", href);
 
     /* call the callback. */
     TRY_OR_FAIL(callback(context, out), done);
 
     /* emit the end tag. */
-    fprintf(out, "</a>\n");
+    fprintf(out, "</a>");
 
     /* success. */
     retval = STATUS_SUCCESS;
