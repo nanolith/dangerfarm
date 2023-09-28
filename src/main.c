@@ -11,6 +11,7 @@ static callback_fn root_pages[] = {
     css_file,
     main_index,
     project_index,
+    about_index,
 };
 
 int main(int argc, char* argv[])
