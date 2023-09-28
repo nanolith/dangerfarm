@@ -2,9 +2,11 @@
 #include <dangerfarm/control.h>
 #include <dangerfarm/file.h>
 #include <dangerfarm/html.h>
+#include <dangerfarm/news_content.h>
 #include <dangerfarm/page_context.h>
 #include <dangerfarm/status_codes.h>
 #include <stdio.h>
+#include <time.h>
 
 static int main_content(page_context* context, FILE* out);
 
@@ -73,6 +75,47 @@ int main_content(page_context* context, FILE* out)
             "This is my personal project website, meant for deeper dives "
             "into projects. Really, I just like the name and thought it would "
             "make an amusing project blog.");
+        XSUCCESS();
+    });
+
+    XH2(done, {
+        XTEXT(done, "News");
+        XSUCCESS();
+    });
+
+    XUL(done, {
+        size_t count = news_item_count();
+        for (size_t i = 0; i < count; ++i)
+        {
+            /* get the news item. */
+            const char* title;
+            const char* description;
+            const char* url;
+            time_t timestamp;
+            callback_fn news_page;
+            TRY_OR_FAIL(
+                news_item_get(
+                    i, &title, &description, &url, &timestamp, &news_page),
+                    done);
+
+            XLI(done, {
+                /* output the date for the item. */
+                struct tm tbuf;
+                localtime_r(&timestamp, &tbuf);
+                char desc[1024];
+                strftime(desc, sizeof(desc), "[ %F ] ", &tbuf);
+                XTEXT(done, desc);
+
+                XA_HREF(done, url, {
+                    XTEXT(done, title);
+                    XSUCCESS();
+                });
+                XSUCCESS();
+            });
+
+            /* generate the news item page. */
+            TRY_OR_FAIL(with_default_page_context(news_page, NULL), done);
+        }
         XSUCCESS();
     });
 
