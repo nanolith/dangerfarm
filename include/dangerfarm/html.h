@@ -165,6 +165,13 @@ int with_anchor_href_tags(
             lambda(int, (page_context* context, FILE* out), body), context), \
         fail_label)
 
+/* h2 tag. */
+#define XH2(fail_label, body) \
+    TRY_OR_FAIL(\
+        with_tags(out, "<h2>", "</h2>", \
+            lambda(int, (page_context* context, FILE* out), body), context), \
+        fail_label)
+
 /* p tag. */
 #define XP(fail_label, body) \
     TRY_OR_FAIL(\
