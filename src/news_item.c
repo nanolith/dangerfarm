@@ -11,6 +11,11 @@ typedef struct
 } news_item;
 
 news_item entries[] = {
+    { .title = "Yak Shaving",
+      .description = "In which I shave some yaks.",
+      .url = "/news/2023/10/02/yak_shaving.html",
+      .timestamp = 1696220342,
+      .news_page = news_item_10_2_yak_shaving },
     { .title = "Website Launch",
       .description = "Today I launched danger.farm's website.",
       .url = "/news/2023/09/28/website_launch.html",
