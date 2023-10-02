@@ -41,3 +41,8 @@ size_t news_item_get(
  * Website launch.
  */
 int news_item_website_launch(page_context* context, FILE* out);
+
+/**
+ * 10/2 update: yak shaving.
+ */
+int news_item_10_2_yak_shaving(page_context* context, FILE* out);
